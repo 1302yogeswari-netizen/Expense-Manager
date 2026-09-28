@@ -5,23 +5,30 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #f5f7fa;
-  color: #222;
+  background: #eef4ff;
+  color: #1f2937;
 }
 
 #root {
   max-width: 1000px;
   margin: auto;
-  padding: 30px 20px;
+  padding: 40px 20px;
+}
+
+.app {
+  width: 100%;
 }
 
 h1 {
   text-align: center;
-  margin-bottom: 30px;
+  margin: 0 0 30px;
+  font-size: 34px;
+  color: #3157a4;
 }
 
 h2 {
-  margin-bottom: 15px;
+  margin-top: 0;
+  color: #29477f;
 }
 
 form {
@@ -33,92 +40,61 @@ form {
 input,
 select,
 button {
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  padding: 12px 14px;
+  font-size: 15px;
+  border-radius: 8px;
+}
+
+input,
+select {
+  width: 100%;
+  border: 2px solid #c5d3ef;
+  background: white;
+  color: #1f2937;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #4f73c7;
 }
 
 button {
+  border: none;
+  background: #4f73c7;
+  color: white;
   cursor: pointer;
+  font-weight: 600;
 }
 
 button:hover {
-  opacity: 0.85;
+  background: #3d5fae;
 }
 
 form button {
-  border: none;
-}
-
-form input,
-form select {
-  width: 100%;
-}
-
-body > div {
-  width: 100%;
-}
-
-@media (max-width: 600px) {
-  #root {
-    padding: 20px 12px;
-  }
-
-  h1 {
-    font-size: 26px;
-  }
-
-  input,
-  select,
-  button {
-    font-size: 14px;
-  }
-}
-
-.expense-card {
-  background: white;
-  padding: 18px;
-  margin-bottom: 15px;
-  border-radius: 10px;
-  border: 1px solid #ddd;
-}
-
-.expense-card h3 {
-  margin-top: 0;
-}
-
-.expense-card p {
-  margin: 6px 0;
-}
-
-.expense-actions {
-  display: flex;
-  gap: 10px;
-  margin-top: 15px;
-}
-
-.app {
-  width: 100%;
+  margin-top: 4px;
 }
 
 .summary {
-  background: white;
-  padding: 20px;
+  background: #dce7ff;
+  padding: 24px;
   margin-bottom: 25px;
-  border-radius: 10px;
-  border: 1px solid #ddd;
+  border-radius: 14px;
+  border: 2px solid #b9c9ed;
   text-align: center;
 }
 
 .summary h2 {
   margin: 0 0 8px;
+  font-size: 20px;
+  color: #29477f;
 }
 
 .summary p {
-  font-size: 28px;
+  font-size: 32px;
   font-weight: bold;
   margin: 0;
+  color: #3157a4;
 }
 
 .filters {
@@ -132,8 +108,66 @@ body > div {
   flex: 1;
 }
 
+.expense-card {
+  background: white;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 14px;
+  border: 2px solid #d7e0f2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.expense-card h3 {
+  margin: 0 0 10px;
+  font-size: 20px;
+  color: #29477f;
+}
+
+.expense-card p {
+  margin: 6px 0;
+  color: #52627a;
+}
+
+.expense-actions {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.expense-actions button:last-child {
+  background: #e05a67;
+}
+
+.expense-actions button:last-child:hover {
+  background: #c94351;
+}
+
 @media (max-width: 600px) {
+  #root {
+    padding: 25px 12px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
   .filters {
     flex-direction: column;
+  }
+
+  .expense-card {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .expense-actions {
+    width: 100%;
+  }
+
+  .expense-actions button {
+    flex: 1;
   }
 }

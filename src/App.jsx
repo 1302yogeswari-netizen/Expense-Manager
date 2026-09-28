@@ -1,12 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ExpenseForm from "./components/ExpenseForm";
 import ExpenseList from "./components/ExpenseList";
 import Summary from "./components/Summary";
 
 function App() {
-  const [expenses, setExpenses] = useState([]);
+  const [expenses, setExpenses] = useState(() => {
+    const savedExpenses = localStorage.getItem("expenses");
+    return savedExpenses ? JSON.parse(savedExpenses) : [];
+  });
+
   const [search, setSearch] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("All");
+
+  useEffect(() => {
+    localStorage.setItem("expenses", JSON.stringify(expenses));
+  }, [expenses]);
 
   const filteredExpenses = expenses.filter((expense) => {
     const matchesSearch = expense.title
@@ -22,7 +30,8 @@ function App() {
 
   return (
     <div className="app">
-  <h1>Personal Expense Manager</h1>
+      <h1>Personal Expense Manager</h1>
+
       <Summary expenses={expenses} />
 
       <ExpenseForm
@@ -31,7 +40,7 @@ function App() {
       />
 
       <div className="filters">
-  <input
+        <input
           type="text"
           placeholder="Search expenses by title"
           value={search}
